@@ -1,0 +1,140 @@
+<html>
+<svg width="100vw" height="100vh" viewBox="0 0 1920 1080">
+    <style>
+        html {
+            background-color: #888;
+        }
+
+        svg {
+            margin: 0;
+            padding: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .button-container {
+            transform: translate(20%, 10%);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        button {
+            width: 200px;
+            height: 100px;
+            background-color: #1e1e1e;
+            color: #ffd700;
+            border: 2px solid #00ffff;
+            padding: 10px 20px;
+            font-family: 'Arial', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            position: relative;
+            outline: none;
+        }
+
+        .vaporwaveButton {
+            filter: url(#vaporwave);
+        }
+    </style>
+    <defs>
+        <filter id="trippy" width="200%" height="200%" x="-50%" y="-50%">
+            <feTurbulence id="trippyNoise" baseFrequency="0.02" numOctaves="8" result="noise" />
+            <feDisplacementMap scale="0" in="SourceGraphic" xChannelSelector="R" yChannelSelector="G"
+                result="displacedDL">
+                <animate attributeName="scale" values="0; -40" fill="freeze" dur="0.1s" begin="tb1.mouseenter" />
+                <animate attributeName="scale" values="-40; 0" fill="freeze" dur="0.1s" begin="tb1.mouseleave" />
+            </feDisplacementMap>
+        </filter>
+        <filter id="vaporwave" width="200%" height="200%" x="-50%" y="-50%">
+            <feImage result="RG" id="redGreenFeImage" />
+            <feDisplacementMap xChannelSelector="R" scale="0" yChannelSelector="B" in="SourceGraphic" in2="RG"
+                result="glitch">
+                <animate id="glitchDispIn" attributeName="scale" values="0; 25" dur="0.1s" begin="vwb1.mouseenter"
+                    fill="freeze" />
+                <animate id="glitchDispOut" attributeName="scale" values="25; 0" dur="0.1s" begin="vwb1.mouseleave"
+                    fill="freeze" />
+            </feDisplacementMap>
+            <feFlood flood-color="#ff00ff" flood-opacity="0.5" />
+            <feComposite in2="glitch" operator="in" />
+            <feOffset dx="0" dy="0" result="leftAbberation">
+                <animate attributeName="dx" values="0; -50" dur="0.1s" fill="freeze" begin="glitchDispIn.begin" />
+                <animate attributeName="dy" values="0; 7" dur="0.1s" fill="freeze" begin="glitchDispIn.begin" />
+                <animate attributeName="dx" values="-50; 0" dur="0.1s" fill="freeze" begin="glitchDispOut.begin" />
+                <animate attributeName="dy" values="7; 0" dur="0.1s" fill="freeze" begin="glitchDispOut.begin" />
+            </feOffset>
+            <feFlood flood-color="#00ffff" flood-opacity="0.5" />
+            <feComposite in2="glitch" operator="in" />
+            <feOffset dx="0" dy="0" result="rightAbberation">
+                <animate attributeName="dx" values="0; 45" dur="0.1s" fill="freeze" begin="glitchDispIn.begin" />
+                <animate attributeName="dx" values="45; 0" dur="0.1s" fill="freeze" begin="glitchDispOut.begin" />
+            </feOffset>
+            <feMerge>
+                <feMergeNode in="leftAbberation" />
+                <feMergeNode in="rightAbberation" />
+                <feMergeNode in="glitch" />
+            </feMerge>
+            <feOffset dy="0">
+                <animate attributeName="dy" values="0; -10" dur="0.1s" fill="freeze" begin="glitchDispIn.begin" />
+                <animate attributeName="dy" values="-10; 0" dur="0.1s" fill="freeze" begin="glitchDispOut.begin" />
+            </feOffset>
+        </filter>
+        <svg id="redGreenRows" width="100%" height="100%">
+            <g>
+                <rect fill="#00ff00" x="0%" y="0%" height="85%" width="100%" />
+                <rect fill="#ff0000" x="0%" y="77%" height="2%" width="100%" />
+                <rect fill="#ff0000" x="0%" y="35%" height="5%" width="100%" />
+                <rect fill="#ff0000" x="0%" y="55%" height="15%" width="100%" />
+            </g>
+        </svg>
+        <filter id="illumination">
+            <feTurbulence id="trippyNoise" baseFrequency="0.05" numOctaves="8" result="noise" />
+            <feSpecularLighting result="specOut" specularExponent="500" lighting-color="#000000">
+                <animate attributeName="lighting-color" values="#000000; #ff00ff" dur="0.1s" begin="ib1.mouseenter" fill="freeze"/>
+                <animate attributeName="lighting-color" values="#ff00ff; #000000" dur="0.1s" begin="ib1.mouseleave" fill="freeze"/>
+                <fePointLight x="95" y="120" z="200" />
+            </feSpecularLighting>
+            <feComposite in="SourceGraphic" in2="compOut" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" />
+            <feComposite in2="SourceGraphic" operator="in" result="lit"/>
+        </filter>
+        <!-- grow rainbow 70's cult filter -->
+    </defs>
+
+    <!-- <rect id="tempFill" y="20%" x="20%" width="50%" height="50%" fill="#888" filter="url(#vaporwave)" /> -->
+    <script>
+        //<![CDATA[
+        createElementSvg = function (element, params = {}, content) {
+            let e = document.createElementNS('http://www.w3.org/2000/svg', element);
+            if (!params) {
+                Object.entries(params).forEach((p) => {
+                    const [attribute, value] = p;
+                    e.setAttributeNS(null, attribute, value);
+                });
+            }
+            if (content) e.textContent = content;
+            return e;
+        };
+
+        let serializer = new XMLSerializer();
+        function svgToString(elementSvg,) {
+            let svgString = serializer.serializeToString(elementSvg);
+            svgString = encodeURIComponent(svgString);
+            return 'data:image/svg+xml,' + svgString;
+        }
+
+        document.querySelector("#redGreenFeImage").setAttribute('href', svgToString(document.querySelector("#redGreenRows")))
+        //]]>
+    </script>
+</svg>
+<div class="button-container">
+    <button id="tb1" style="filter: url(#trippy)"
+        onmouseenter="(()=>{document.querySelector('#trippyNoise').setAttribute('seed', Math.random() * 2000000)})()">Psychadelic</button>
+    <button id="vwb1" style="filter: url(#vaporwave)">Vaporwave</button>
+    <button id="ib1" style="filter: url(#illumination)">Illuminaiton</button>
+</div>
+
+</html>

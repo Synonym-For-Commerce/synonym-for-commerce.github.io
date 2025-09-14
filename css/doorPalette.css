@@ -1,0 +1,28 @@
+body {
+    --transparent: hsla(0, 0%, 0%, 0);
+    --white-trans: hsla(0, 0%, 50%, 0.2);
+    --white-trans-70: hsla(0, 0%, 50%, 0.7);
+    --charcoal   : hsl(0, 05, 14%);
+    --black      : hsl(261, 89%, 7%);
+    --g3         : #333;
+    --g6         : #666;
+    --g9         : #999;
+    --gc         : #ccc;
+    --white      : hsl(0, 0%, 96%);
+
+    --red        : hsl(358, 88%, 68%);
+    --vermillion : hsl(352, 90%, 39%);
+    --orange     : hsl(42, 100%, 70%);
+    --yellow-fade: hsl(33, 100%, 91%);
+    --yellow     : hsl(56, 100%, 82%);
+    --green      : hsl(165, 57%, 75%);
+    --green-light: hsl(68, 52%, 53%);
+    --green-dark : hsl(81, 15%, 18%);
+    --green-brown: hsl(106, 10%, 42%);
+    --emerald    : hsl(150, 100%, 40%);
+    --blue       : hsl(195, 100%, 60%);
+    --blue-dark  : hsl(234, 74%, 66%);
+    --blue-fade  : hsl(266, 79%, 81%);
+    --teal       : hsl(196, 36%, 41%);
+    --purple     : hsl(297, 92%, 70%);
+}

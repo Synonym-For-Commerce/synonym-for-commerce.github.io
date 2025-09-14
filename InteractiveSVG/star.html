@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang='en'>
+<style>
+    #polylineDemo {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        /* background-color: #FBE870; */
+        background-color: #66CDAA;
+        background-color: black;
+        /* animate to #66CDAA or something */
+    }
+
+
+    #polylineDemo polyline {
+        /* stroke            : none; */
+        stroke: #ff69b4;
+        stroke-width: 5px;
+        /* fill                 : none; */
+        /* fill              : #ff69b4; */
+    }
+
+    #polylineDemo use {
+        transform: scaleY(-1);
+    }
+
+    #tray {
+        position: fixed;
+        bottom: 5%;
+        left: 0;
+        background-color: var(--gray-dark);
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    #tray div {
+        display: flex;
+        align-items: center;
+        height: 40;
+    }
+
+    #pathRingsUI {
+        display: flex;
+        flex-direction: row;
+        /* Stack the inner divs vertically */
+        gap: 10px;
+        /* Add space between the inner divs */
+    }
+
+    #circleSines path {
+        fill: black;
+        /* stroke-width: 5px; */
+    }
+
+    #polylineDemo path,
+    #polylineDemo polyline {
+        stroke-width: 5px;
+        fill: none;
+    }
+
+    #pathRingsG path {
+        fill: black;
+    }
+</style>
+
+<head>
+    <title>Synonym For Commerce</title>
+</head>
+
+<body>
+    <svg id='star' class='svgContainer' xmlns='http://www.w3.org/2000/svg' version='1.1' width='1920' height='1080'
+        viewBox='0 0 1920 1080' preserveAspectRatio='xMidYMid meet'>
+        <g id="polylineDemo" style="transform: translate(50%, 50%)">
+            <g id="pathRingsG"></g>
+        </g>
+    </svg>
+
+    <div xmlns="http://www.w3.org/1999/xhtml">
+        <div id="tray">
+            <div id="pathRingsUI"></div>
+        </div>
+    </div>
+
+    <script>
+        //<![CDATA[ 
+        const NS = {
+            svg: "http://www.w3.org/2000/svg",
+            xlink: "http://www.w3.org/1999/xlink",
+            html: "http://www.w3.org/1999/xhtml",
+        };
+
+        createElementSvg = function (element, params = {}, content, ns) {
+            let e = document.createElementNS(ns ?? NS.svg, element);
+            if (!params) return e;
+            Object.entries(params).forEach((p) => {
+            const [attribute, value] = p;
+            e.setAttributeNS(null, attribute, value);
+            });
+            if (content) e.textContent = content;
+            return e;
+        };
+        
+        let canvas = document.querySelector("#polylineDemo");
+        const pathRingsG = document.getElementById("pathRingsG");
+        let pathRingsUI = document.getElementById("pathRingsUI");
+
+        polyline = function (params, content) {
+            return createElementSvg("polyline", params, content);
+            };
+
+        group = function (params, content) {
+            return createElementSvg("g", params, content);
+            };
+
+        path = function (params, content) {
+            return createElementSvg("path", params, content);
+        };
+
+        circleCutCoords = function (cuts, radius, angleOffset) {
+            let coords = [];
+            for (let i = 0; i < cuts; i++) {
+            let angleRad = ((2 * Math.PI) / cuts) * i + (angleOffset ?? 0);
+            coords[i] = [getX(angleRad, radius), getY(angleRad, radius)];
+            }
+            return coords;
+        };
+
+//math
+        getX = (radians, hypotenuse) => {
+            return Math.sin(radians) * hypotenuse;
+        };
+        getY = (radians, hypotenuse) => {
+        return Math.cos(radians) * hypotenuse;
+        };
+
+
+        let ringSines = [
+            {
+            iterations: 3,
+            cycles: 5,
+            radius: 128,
+            amp: 2.5,
+            id: "ring1",
+            },
+        ];
+
+        ringToG = function (obj) {
+        let iterations = obj.iterations ?? 1;
+        let radius = obj.radius ?? 128;
+        let cuts = obj.cycles ?? 3;
+        let amp = obj.amp ?? 1;
+        let g = group({ id: obj.id });
+
+        for (let i = 0; i < iterations; i++) {
+            let ccAngleOff = 0;
+            let cpAngleOff = Math.PI / cuts;
+            if (obj.mirror && i % 2) {
+            ccAngleOff = Math.PI / cuts;
+            cpAngleOff = (2 * Math.PI) / cuts;
+            }
+            cutCoords = circleCutCoords(cuts, radius * i + radius, ccAngleOff);
+            controlPoints = circleCutCoords(
+            cuts,
+            radius * i + radius * amp,
+            cpAngleOff
+            );
+            let pathString = `M ${cutCoords[0][0]} ${cutCoords[0][1]} `;
+            for (let j = 1; j < cuts; j++) {
+            pathString += `C ${controlPoints[j - 1][0]} ${controlPoints[j - 1][1]} ${
+                controlPoints[j - 1][0]
+            } ${controlPoints[j - 1][1]} ${cutCoords[j][0]} ${cutCoords[j][1]} `;
+            }
+            pathString += `C ${controlPoints[cuts - 1][0]} ${
+            controlPoints[cuts - 1][1]
+            } ${controlPoints[cuts - 1][0]} ${controlPoints[cuts - 1][1]} ${
+            cutCoords[0][0]
+            } ${cutCoords[0][1]} z`;
+            g.prepend(path({ d: pathString }));
+        }
+        return g;
+        };
+
+        redrawPathRing = function () {
+        pathRingsG.innerHTML = "";
+        let g = ringToG(ringSines[0]);
+        childrenToNextColor(g, { hueChange: 90, hue: 180 });
+        pathRingsG.appendChild(g);
+        };
+
+//
+//colorize
+//
+
+        childrenToNextColor = function (el, ...hsl) {
+        //hsl {hue: degrees, hueChange: degrees, satuartion: 0-1, lightness: 0-1, hueChange: degrees, stroke: boool, fill: bool}
+        let stroke = hsl.stroke != false ? true : false;
+        let fill = hsl.fill != true ? false : true;
+        let hue = hsl.hue ?? 0;
+        let hueChange = hsl.hueChange ?? 45;
+        let saturation = hsl.saturation ?? "80%";
+        let lightness = hsl.lightness ?? "60%";
+
+        for (let i = 0; i < el.children.length; i++) {
+            let hsl = `hsl(${hue + hueChange * i}, ${saturation}, ${lightness})`;
+            if (stroke) el.children[i].style.stroke = hsl;
+            if (fill) el.children[i].style.fill = hsl;
+        }
+        };
+
+        gToNextColor = function (el, hsl) {
+        //hsl {count: int, hue: degrees, hueChange: degrees, satuartion: 0-1, lightness: 0-1, hueChange: degrees, stroke: boool, fill: bool}
+        let stroke = hsl.stroke != false ? true : false;
+        let fill = hsl.fill != true ? false : true;
+        let hue = hsl.hue ?? 0;
+        let count = hsl.count ?? 0;
+        let hueChange = hsl.hueChange ?? 12;
+        let saturation = hsl.saturation ?? "80%";
+        let lightness = hsl.lightness ?? "60%";
+        let color = `hsl(${hue + hueChange * count}, ${saturation}, ${lightness})`;
+        if (stroke) el.style.stroke = color;
+        if (fill) el.style.fill = color;
+        };
+
+//
+//UI
+//
+
+        populatePathRingUI = function () {
+            for (let i = 0; i < ringSines.length; i++) {
+                let div = createElementSvg("div", { id: "pathUI" + i }, null, NS.html);
+                let cs = ringSines[0];
+                div.appendChild(createElementSvg("input", {type: "range", min: 1, max: 20, step: 1, oninput: "updatePathRingValue(this)", name: "iterations", title: "0"}, null, NS.html));
+                div.appendChild(createElementSvg("input", {type: "range", min: 1, max: 64, step: 1, oninput: "updatePathRingValue(this)", name: "cycles", title: "0"}, null, NS.html));
+                div.appendChild(createElementSvg("input", {type: "range", min: 0, max: 512, step: 8, oninput: "updatePathRingValue(this)", name: "radius", title: "0"}, null, NS.html));
+                div.appendChild(createElementSvg("input", {type: "range", min: -10, max: 10, step: 0.1, oninput: "updatePathRingValue(this)", name: "amp", title: "0"}, null, NS.html));
+                div.appendChild(createElementSvg("input", {type: "checkbox", oninput: "updatePathRingValue(this)", name: "mirror", title: "0"}, null, NS.html))
+            pathRingsUI.appendChild(div);
+        }
+        };
+        updatePathRingValue = function (src) {
+            let sineObj = ringSines[src.title];
+            sineObj[src.name] =
+                src.name == "mirror" ? src.checked : parseFloat(src.value);
+            redrawPathRing();
+        };
+
+//
+//initialization
+//
+
+        populatePathRingUI();
+        redrawPathRing();
+
+//]]>
+    </script>
+</body>
+
+</html>

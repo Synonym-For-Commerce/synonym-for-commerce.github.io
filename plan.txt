@@ -1,0 +1,46 @@
+
+
+categories (option 1):
+animaitons (including raster loops and non interactive SVG, do not include narrative animations)
+interactive (including godot)
+
+
+categories (option 2):
+raster stuf (loops and narrative animations?)
+svg stuf (interactive and animation)
+godot
+
+
+
+what we have:
+svg animations: paisley, cow skull, SVG title from demo
+svg interactive: slug, flowers, NoMoreDoors
+raster loops: error, pink crest
+raster animations: bottle eye, paint
+
+
+possible includes that require fixing:
+mandala maker
+WTBE zoo
+PTSD
+dream catcher
+
+
+
+plan:
+1. remove plaid from No more NoMoreDoors
+2.SVG (open over page with obvious X to close or ESC)
+Flowers
+cow skull
+pasiley
+slug
+TODO: +++(City with hover cars and perspective, simpsons colors, wesley willis colors, beksinksi colors)
+
+3.RASTER (open as image to the side of the page, or over top if horizontal)
+error
+pink crest
+eyeball, paint huff, PTSD?
+
+4. GODOT (opens as link, put in a menu that goes back to last page)
+TODO ++++++make a little 2d game in godot
+make a 3d demo of witches to be expected assets
