@@ -525,11 +525,16 @@
       <h3 id="aboutBlank" class="accordionButton ui-accordion-header" tabindex="0">SVG</h3>
       <div class="ui-accordion-content">
         <ul>
-          <li><a class="tooltip" href="/AnimationsSVG/paisley.svg">Paisley<span class="tooltiptext">An animation</span></a></li>
-          <li><a class="tooltip" href="/AnimationsSVG/cow-skull.svg">Cow Skull<span class="tooltiptext">Cow skull animation. Performs poorly without GPU/hardware acceleration enabled</span></a></li>
-          <li><a class="tooltip" href="/AnimationsSVG/FlowersGsap/index.html">Flowers<span class="tooltiptext">A simple animation made with GSAP. Try clicking some of the flowers</span></a></li>
-          <li><a class="tooltip" href="/InteractiveSVG/parallax.svg">Slug<span class="tooltiptext">Moving the mouse around the slug will demonstrate parallaxing</span></a></li>
-          <li><a class="tooltip" href="/mandala-maker/">Mandala Generator<span class="tooltiptext">Generate mandalas</span></a></li>
+          <li><a class="tooltip" href="/AnimationsSVG/paisley.svg">Paisley<span class="tooltiptext">An
+                animation</span></a></li>
+          <li><a class="tooltip" href="/AnimationsSVG/cow-skull.svg">Cow Skull<span class="tooltiptext">Cow skull
+                animation. Performs poorly without GPU/hardware acceleration enabled</span></a></li>
+          <li><a class="tooltip" href="/AnimationsSVG/FlowersGsap/index.html">Flowers<span class="tooltiptext">A simple
+                animation made with GSAP. Try clicking some of the flowers</span></a></li>
+          <li><a class="tooltip" href="/InteractiveSVG/parallax.svg">Slug<span class="tooltiptext">Moving the mouse
+                around the slug will demonstrate parallaxing</span></a></li>
+          <li><a class="tooltip" href="/mandala-maker/">Mandala Generator<span class="tooltiptext">Generate
+                mandalas</span></a></li>
         </ul>
       </div>
       <h3 id="rasterAnimations" class="accordionButton ui-accordion-header" tabindex="1">
@@ -537,12 +542,11 @@
       </h3>
       <div class="ui-accordion-content">
         <ul>
-          <li><a class="tooltip" href="/liveWallpapers">Pink Crest<span class="tooltiptext">This tooltip should be
-                obscured by the animaiton</span></a></li>
-          <li><a class="tooltip" href="/liveWallpapers">Error<span class="tooltiptext">This tooltip should be obscured
-                by the animaiton</span></a></li>
-          <li><a class="tooltip" href="/liveWallpapers">Bottle<span class="tooltiptext">This tooltip should be obscured
-                by the animaiton</span></a></li>
+          <li><p class="tooltip video-tooltip" data="/videos/GreyPinkCrestPortait.mp4">Pink Crest<span class="tooltiptext">This tooltip should be obscured by the animaiton</span><p/></li>
+          <li>
+            <p class="tooltip video-tooltip" data="/videos/errorPortrait.mp4">Error<span class="tooltiptext">This tooltip should be obscured by the animaiton</span></p>
+          </li>
+          <li><p class="tooltip video-tooltip" data="/liveWallpapers">Bottle<span class="tooltiptext">This tooltip should be obscured by the animaiton</span></p></li>
         </ul>
       </div>
       <h3 id="pointAndClick" class="accordionButton ui-accordion-header" tabindex="3">
@@ -556,6 +560,12 @@
         </ul>
       </div>
     </div>
+  </div>
+
+  <div id="video-player-div">
+    <video id="video-player" autoplay muted loop>
+      <source src="videos/GreyPinkCrestPortait.mp4" type="video/mp4">
+    </video>
   </div>
 
   <div id="curtains"></div>

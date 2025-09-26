@@ -29,6 +29,7 @@ const catagoryArr = [
     accordionContentColor: getCssVar("--trans-white"),
     accordionTextColor: getCssVar("--black"),
     bannerTextColor: "white",
+    videoPlayer: "collapse",
   },
   {
     name: "rasterAnimations",
@@ -46,6 +47,7 @@ const catagoryArr = [
     accordionContentColor: getCssVar("--white-trans"),
     accordionTextColor: getCssVar("--black"),
     bannerTextColor: getCssVar("--red"),
+    videoPlayer: "visible",
   },
   {
     name: "svgShowcase",
@@ -63,6 +65,7 @@ const catagoryArr = [
     accordionContentColor: getCssVar("--black"),
     accordionTextColor: getCssVar("--white"),
     bannerTextColor: getCssVar("--green-light"),
+    videoPlayer: "collapse",
   },
   {
     name: "pointAndClick",
@@ -80,6 +83,7 @@ const catagoryArr = [
     accordionContentColor: getCssVar("--white-trans-70"),
     accordionTextColor: getCssVar("--black"),
     bannerTextColor: "black",
+    videoPlayer: "collapse",
   }
 ];
 
@@ -135,6 +139,7 @@ changeCatagory = function (c) {
     cssRule: { opacity: c.borders ? 1 : 0 },
   });
   gsap.to(".sfc-banner text", { duration: dur, fill: c.bannerTextColor });
+  gsap.set("#video-player-div", {visibility: c.videoPlayer})
 };
 
 $(".accordionButton").click((e) => {

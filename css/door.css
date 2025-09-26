@@ -45,13 +45,26 @@ a {
     padding         : 5px 0;
     position        : fixed;
     z-index         : 1;
-    top             : 45%;
-    left            : 10%;
+    top             : 42%;
+    left            : 65%;
 }
 
 .tooltip:hover .tooltiptext {
     visibility: visible;
 }
+
+#video-player-div{
+    visibility: collapse;
+    z-index: 2;
+}
+
+video{
+    position:absolute;
+    height: 90VH;
+    right: 15%;
+    top: 5%;
+}
+
 
 #curtains {
     width           : 100%;
