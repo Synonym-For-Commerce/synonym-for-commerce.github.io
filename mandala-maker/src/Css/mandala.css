@@ -1,0 +1,50 @@
+path {
+    stroke-width: 10px;
+    stroke      : black;
+}
+
+.mandalaCircle {
+    fill        : none;
+    stroke      : black;
+    stroke-width: 50px;
+}
+
+.thick {
+    stroke-width: 100px;
+}
+
+.inner,
+.dots {
+    fill: black;
+}
+
+.omegaDot {
+    fill: black;
+}
+
+.rice,
+.egg .primary {
+    fill  : var(--white);
+    stroke: black;
+}
+
+.petalHeartMain {
+    fill: var(--pink);
+}
+
+.petalDiamond,
+.palm .primary {
+    fill: var(--green);
+}
+
+.stadium {
+    fill: var(--yellow);
+}
+
+.stadiums .primary {
+    fill: var(--teal);
+}
+
+.petalDaisy {
+    fill: var(--red);
+}

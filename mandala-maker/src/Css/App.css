@@ -1,0 +1,103 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height        : 40vmin;
+  pointer-events: none;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.12);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #f50057;
+}
+
+#svgContainer {
+  /* background-color: gray; */
+  background-image: radial-gradient(#999, #333);
+}
+
+.fixed {
+  position: fixed;
+}
+
+#buttonHideHUD {
+  position: fixed;
+  bottom: 0;
+}
+
+#pathManipulationMenu,
+#mandalaTable {
+  height: 50%;
+}
+
+#pathGallery,
+#mandalaTable,
+.tabPanel {
+  overflow     : auto;
+  align-content: center;
+}
+
+#square {
+  border-radius: 0;
+}
+
+@media screen and (orientation: landscape) {  
+  #pathGallery {
+    top   : 0;
+    right : 0;
+    width : 25%;
+    height: 100%;
+  }
+
+  #pathManipulationMenu {
+    top       : 0;
+    left      : 0;
+    width     : 25%;
+    max-height: 50%;
+  }
+
+  #mandalaTable {
+    bottom    : 0;
+    left      : 0;
+    width     : 25%;
+    max-height: 50%;
+  }
+}
+
+@media screen and (orientation: portrait) {
+  #pathGallery {
+    bottom    : 1%;
+    left      : 0;
+    width     : 100%;
+    max-height: 30%;
+  }
+
+  #pathManipulationMenu {
+    top       : 0;
+    left      : 0;
+    width     : 50%;
+    max-height: 30%;
+  }
+
+  #mandalaTable {
+    top       : 0;
+    right     : 0;
+    width     : 50%;
+    max-height: 30%;
+  }
+}

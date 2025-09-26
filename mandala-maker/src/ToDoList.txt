@@ -1,0 +1,6 @@
+favicon
+import paths into divs with jquery.load?
+save mandala as path
+save mandala as svg???
+lowest priority: get sliders to retain state on tab switch
+losert priority: make a better favicon
