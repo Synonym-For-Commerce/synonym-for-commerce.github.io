@@ -83,7 +83,7 @@
   <svg id="svgContainer" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1366 768"
     preserveAspectRatio="none" overflow="visible">
     <defs>
-      <filter id="filterCloud">
+      <filter id="filterCloud" width="200%" height="200%" x="-50%" y="-50%">
         <feTurbulence id="turbulence" type="fractalNoise" baseFrequency="0.014" numOctaves="1" seed="1"></feTurbulence>
         <feDisplacementMap id="dispMap" in="SourceGraphic" scale="1"></feDisplacementMap>
       </filter>
@@ -437,7 +437,7 @@
       </pattern>
       <!-- end of plaid stuff -->
       <pattern id="patternPolkaDots" width="40" height="40" patternUnits="userSpaceOnUse"
-        patternContentUnits="userSpaceOnUse">
+        patternContentUnits="objectBoundingBox">
         <circle id="pattern-circle" cx="23" cy="20" r="5" fill="#ffffff" />
       </pattern>
     </defs>
@@ -541,7 +541,7 @@
         <ul>
           <li><p class="tooltip video-tooltip" data-loop="true" data-url="/videos/GreyPinkCrestPortait.mp4">Pink Crest<span class="tooltiptext">A sketch that was animated with Blender</span></p></li>
           <li>
-            <p class="tooltip video-tooltip" data-loop="true" data-url="/videos/errorPortrait.mp4">Error<span class="tooltiptext">Another sketch animated with Blender</span></p>
+            <p class="tooltip video-tooltip" data-loop="true" data-url="/videos/errorPortrait.mp4">Ubrania<span class="tooltiptext">Another sketch animated with Blender</span></p>
           </li>
           <li><p class="tooltip video-tooltip" data-loop="false" data-url="/videos/ChrisjaminBentopher.webm">Bottle<span class="tooltiptext">A very early animation attempt, with a compelling narrative <br/> <span style="color: red;">WARNING: Graphic content</span></span></p></li>
           <li><p class="tooltip video-tooltip" data-loop="false" data-url="/videos/huff paint draft 2 bright.mp4">The Painter<span class="tooltiptext">A short animaiton about unreasonable roomates</span></p></li>
