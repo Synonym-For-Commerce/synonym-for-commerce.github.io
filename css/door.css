@@ -32,6 +32,8 @@ a {
     position     : relative;
     display      : inline-block;
     border-bottom: 1px dotted black;
+    margin: 0;
+    cursor: pointer;
 }
 
 .tooltip .tooltiptext {
@@ -46,7 +48,7 @@ a {
     position        : fixed;
     z-index         : 1;
     top             : 42%;
-    left            : 65%;
+    left            : 28%;
 }
 
 .tooltip:hover .tooltiptext {
@@ -54,17 +56,27 @@ a {
 }
 
 #video-player-div{
-    visibility: collapse;
     z-index: 2;
 }
 
 video{
     position:absolute;
     height: 90VH;
-    right: 15%;
+    right: 0;
     top: 5%;
+    max-width: 50%;
 }
 
+iframe{
+    position: absolute;
+    border: transparent;
+    border-radius: 50%;
+    height: 70VH;
+    width: 70VH;
+    right: 8%;
+    top: 15%;
+
+}
 
 #curtains {
     width           : 100%;

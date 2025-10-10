@@ -3,7 +3,7 @@ const accordions = [
   CSSRulePlugin.getRule(".accordion:after"),
 ];
 // defaul duration for changes
-let dur = 2;
+let dur = 1.2;
 const buttonBorderDefault = "3px, solid black";
 const opacityDefault = 0.5;
 
@@ -12,9 +12,9 @@ getCssVar = function (value) {
   return window.getComputedStyle(document.body).getPropertyValue(value);
 };
 
-const catagoryArr = [
+const categoryArr = [
   {
-    name: "aboutBlank",
+    name: "svg-showcase",
     bgColor: "#000000",
     borderFill: "#ffffff",
     stroke: "#626868",
@@ -29,10 +29,11 @@ const catagoryArr = [
     accordionContentColor: getCssVar("--trans-white"),
     accordionTextColor: getCssVar("--black"),
     bannerTextColor: "white",
-    videoPlayer: "collapse",
+    videoPlayer: "hidden",
+    iframe: "visible",
   },
   {
-    name: "rasterAnimations",
+    name: "raster-animations",
     bgColor: getCssVar("--red"),
     borderFill: getCssVar("--yellow"),
     stroke: getCssVar("--blue"),
@@ -48,9 +49,10 @@ const catagoryArr = [
     accordionTextColor: getCssVar("--black"),
     bannerTextColor: getCssVar("--red"),
     videoPlayer: "visible",
+    iframe: "hidden",
   },
   {
-    name: "svgShowcase",
+    name: "currently-unused",
     bgColor: "black",
     borderFill: "url(#patternPlaid)",
     stroke: "black",
@@ -65,10 +67,11 @@ const catagoryArr = [
     accordionContentColor: getCssVar("--black"),
     accordionTextColor: getCssVar("--white"),
     bannerTextColor: getCssVar("--green-light"),
-    videoPlayer: "collapse",
+    videoPlayer: "hidden",
+    iframe: "hidden",
   },
   {
-    name: "pointAndClick",
+    name: "godot",
     bgColor: "black",
     borderFill: "white",
     stroke: getCssVar("--red"),
@@ -83,11 +86,12 @@ const catagoryArr = [
     accordionContentColor: getCssVar("--white-trans-70"),
     accordionTextColor: getCssVar("--black"),
     bannerTextColor: "black",
-    videoPlayer: "collapse",
+    videoPlayer: "hidden",
+    iframe: "visible",
   }
 ];
 
-changeCatagory = function (c) {
+changeCategory = function (c) {
   let tl = gsap.timeline();
   tl.to(".backgroundSvg", { duration: dur / 2, opacity: 0 });
   tl.to(c.backgroundSvg, { duration: dur / 2, opacity: 1 });
@@ -139,12 +143,13 @@ changeCatagory = function (c) {
     cssRule: { opacity: c.borders ? 1 : 0 },
   });
   gsap.to(".sfc-banner text", { duration: dur, fill: c.bannerTextColor });
-  gsap.set("#video-player-div", {visibility: c.videoPlayer})
+  gsap.set("#video-player", {visibility: c.videoPlayer});
+  gsap.set("#iframe-showcase", {visibility: c.iframe});
 };
 
 $(".accordionButton").click((e) => {
-  let catagory = catagoryArr.find((c) => c.name == e.target.id);
-  changeCatagory(catagory);
+  let category = categoryArr.find((c) => c.name == e.target.id);
+  changeCategory(category);
 });
 
 $(".accordionButton").on("mouseenter", () => {
@@ -156,10 +161,24 @@ $(".accordionButton").on("mouseleave", () => {
   gsap.to("#dispMap", { attr: { scale: 1 } });
 });
 
+$(".iframe").on("click", (event)=>{
+  document.querySelector("#iframe-showcase").setAttribute("src", event.target.dataset.url)
+})
+
+$(".video-tooltip").on("click", (event)=>{
+  document.querySelector("#video-player-source").setAttribute("src", event.target.dataset.url)
+  let video = document.querySelector("#video-player")
+  let loop = event.target.dataset.loop ==="true";
+  video.muted = loop;
+  video.loop = loop;
+  video.load()
+  video.play()
+})
+
 //FIXME: as much as i enjoy this animation, firefox cant handle nor can older systems
 bannerShapes = function () {
   gsap.to("#curtains", { duration: dur, opacity: 0, visibility: "hidden" });
-  changeCatagory(catagoryArr[0]);
+  changeCategory(categoryArr[0]);
 
   const isChrome =
     navigator.userAgent.includes("Chrome") &&
@@ -177,4 +196,5 @@ bannerShapes = function () {
       attr: { scale: 0 },
     });
   }
+
 };
