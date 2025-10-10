@@ -52,7 +52,7 @@ const categoryArr = [
     iframe: "hidden",
   },
   {
-    name: "currently-unused",
+    name: "qa",
     bgColor: "black",
     borderFill: "url(#patternPlaid)",
     stroke: "black",
