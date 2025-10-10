@@ -87,7 +87,7 @@ const categoryArr = [
     accordionTextColor: getCssVar("--black"),
     bannerTextColor: "black",
     videoPlayer: "hidden",
-    iframe: "visible",
+    iframe: "hidden",
   }
 ];
 
