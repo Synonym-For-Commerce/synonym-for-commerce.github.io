@@ -92,6 +92,12 @@ const categoryArr = [
 ];
 
 changeCategory = function (c) {
+
+  document.querySelector("#video-player").pause()
+
+  // switch (c.name)
+  //   case ""
+
   let tl = gsap.timeline();
   tl.to(".backgroundSvg", { duration: dur / 2, opacity: 0 });
   tl.to(c.backgroundSvg, { duration: dur / 2, opacity: 1 });
