@@ -1,85 +1,47 @@
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Synonym For Commerce</title>
-    <link rel="stylesheet" href="css/doorPalette.css" />
-    <link rel="stylesheet" href="css/door.css" />
-    <link rel="stylesheet" href="css/jquery-ui.css" />
-  </head>
 
-  <body onload="bannerShapes()">
-    <div id="noBackgroundSvg" class="backgroundSvg"></div>
-    <svg
-      id="svgContainer"
-      xmlns="http://www.w3.org/2000/svg"
-      version="1.1"
-      viewBox="0 0 1366 768"
-      preserveAspectRatio="none"
-    >
-      <defs>
-        <filter id="filterCloud">
-          <feTurbulence
-            id="turbulence"
-            type="fractalNoise"
-            baseFrequency="0.014"
-            numOctaves="1"
-            seed="1"
-          ></feTurbulence>
-          <feDisplacementMap
-            id="dispMap"
-            in="SourceGraphic"
-            scale="1"
-          ></feDisplacementMap>
-        </filter>
-        <filter id="filterErode">
-          <feMorphology operator="erode" radius="1" />
-        </filter>
-        <filter id="filterContrastText">
-          <feMorphology
-            in="SourceGraphic"
-            operator="dilate"
-            radius="1"
-            result="DILATE_10"
-          />
-          <feColorMatrix
-            in="SourceGraphic"
-            type="matrix"
-            values="-1 0 0 0 1 
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Synonym For Commerce</title>
+  <link rel="stylesheet" href="css/doorPalette.css" />
+  <link rel="stylesheet" href="css/door.css" />
+  <link rel="stylesheet" href="css/jquery-ui.css" />
+  <title>My Page Title</title>
+</head>
+
+<body onload="bannerShapes()">
+  <div id="noBackgroundSvg" class="backgroundSvg"></div>
+  <svg id="svgContainer" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1366 768"
+    preserveAspectRatio="none">
+    <defs>
+      <filter id="filterCloud">
+        <feTurbulence id="turbulence" type="fractalNoise" baseFrequency="0.014" numOctaves="1" seed="1"></feTurbulence>
+        <feDisplacementMap id="dispMap" in="SourceGraphic" scale="1"></feDisplacementMap>
+      </filter>
+      <filter id="filterErode">
+        <feMorphology operator="erode" radius="1" />
+      </filter>
+      <filter id="filterContrastText">
+        <feMorphology in="SourceGraphic" operator="dilate" radius="1" result="DILATE_10" />
+        <feColorMatrix in="SourceGraphic" type="matrix" values="-1 0 0 0 1 
                     0 -1 0 0 1 
                     0 0 -1 0 1
-                    0 0 0 1 0"
-            result="INVERT_COLOR_10"
-          />
-          <feMerge>
-            <feMergeNode in="DILATE_10" />
-            <feMergeNode in="INVERT_COLOR_10" />
-          </feMerge>
-        </filter>
-        <filter id="filterShapes" x="-300%" width="700%">
-          <feImage
-            id="Image0Fe"
-            preserveAspectRatio="xMidYMid meet"
-            href="./assets/Shapes 1.png"
-            result="Image0"
-          ></feImage>
-          <feDisplacementMap
-            id="filterShapesDisplacementMap"
-            scale="360"
-            in="SourceGraphic"
-            xChannelSelector="B"
-            yChannelSelector="R"
-            result="DisplacementMap0"
-          ></feDisplacementMap>
-        </filter>
-        <!-- minBlackRed stuff -->
-        <g id="berryTree">
-          <path
-            id="stem"
-            fill="black"
-            stroke="none"
-            stroke-width="1"
-            d="M 37.07,5.77
+                    0 0 0 1 0" result="INVERT_COLOR_10" />
+        <feMerge>
+          <feMergeNode in="DILATE_10" />
+          <feMergeNode in="INVERT_COLOR_10" />
+        </feMerge>
+      </filter>
+      <filter id="filterShapes" x="-300%" width="700%">
+        <feImage id="Image0Fe" preserveAspectRatio="xMidYMid meet" href="./assets/Shapes 1.png" result="Image0">
+        </feImage>
+        <feDisplacementMap id="filterShapesDisplacementMap" scale="360" in="SourceGraphic" xChannelSelector="B"
+          yChannelSelector="R" result="DisplacementMap0"></feDisplacementMap>
+      </filter>
+      <!-- minBlackRed stuff -->
+      <g id="berryTree">
+        <path id="stem" fill="black" stroke="none" stroke-width="1" d="M 37.07,5.77
                         C 37.01,4.58 39.19,3.58 39.32,5.39
                           39.32,5.39 39.07,26.77 39.07,26.77
                           39.07,26.77 37.07,61.78 37.07,61.78
@@ -132,14 +94,8 @@
                           32.06,100.78 34.07,78.78 34.07,78.78
                           34.07,78.78 34.07,63.78 34.07,63.78
                           34.07,63.78 36.07,33.77 36.07,33.77
-                          36.07,33.77 37.07,5.77 37.07,5.77 Z"
-          />
-          <path
-            id="berries"
-            fill="red"
-            stroke="none"
-            stroke-width="1"
-            d="M 71.48,66.34
+                          36.07,33.77 37.07,5.77 37.07,5.77 Z" />
+        <path id="berries" fill="red" stroke="none" stroke-width="1" d="M 71.48,66.34
                           C 70.07,64.86 69.88,61.53 69.85,59.84
                               69.82,58.16 70.13,56.12 70.31,54.80
                               73.10,45.61 86.19,49.57 84.91,59.78
@@ -157,15 +113,9 @@
                               73.30,196.40 66.99,196.68 64.63,194.73
                               61.84,192.44 61.38,181.15 63.24,178.17
                               64.74,175.77 67.59,174.56 70.07,173.49
-                              70.07,173.49 70.07,173.49 70.07,173.49 Z"
-          />
-        </g>
-        <path
-          id="bubbleTree"
-          fill="black"
-          stroke="none"
-          stroke-width="1"
-          d="M 31.00,3.68
+                              70.07,173.49 70.07,173.49 70.07,173.49 Z" />
+      </g>
+      <path id="bubbleTree" fill="black" stroke="none" stroke-width="1" d="M 31.00,3.68
                         C 37.12,3.53 47.25,6.47 51.91,10.39
                           59.20,16.52 66.40,35.39 65.68,45.00
                           64.44,61.51 64.87,55.36 60.88,70.00
@@ -345,195 +295,163 @@
                         M 74.00,263.00
                         C 75.00,261.82 79.00,262.18 79.00,264.00
                           79.00,265.82 77.27,268.82 75.00,268.00
-                          72.73,267.18 73.00,264.18 74.00,263.00 Z"
-        />
-        <!-- end of min black red stuff -->
-        <!-- plaid stuff -->
-        <g id="stitches">
-          <g id="horizontal">
-            <rect width="4" height="1" />
-            <rect width="4" height="1" x="2" y="2" />
-            <rect width="4" height="1" x="4" y="4" />
-            <rect width="4" height="1" x="6" y="6" />
-            <rect width="2" height="1" x="8" y="8" />
-            <rect width="2" height="1" y="8" />
-          </g>
-          <g id="vertical">
-            <rect width="1" height="5" />
-            <rect width="1" height="5" x="2" y="2" />
-            <rect width="1" height="5" x="4" y="4" />
-            <rect width="1" height="4" x="6" y="6" />
-            <rect width="1" height="2" x="8" y="8" />
-            <rect width="1" height="1" x="6" />
-            <rect width="1" height="3" x="8" />
-          </g>
+                          72.73,267.18 73.00,264.18 74.00,263.00 Z" />
+      <!-- end of min black red stuff -->
+      <!-- plaid stuff -->
+      <g id="stitches">
+        <g id="horizontal">
+          <rect width="4" height="1" />
+          <rect width="4" height="1" x="2" y="2" />
+          <rect width="4" height="1" x="4" y="4" />
+          <rect width="4" height="1" x="6" y="6" />
+          <rect width="2" height="1" x="8" y="8" />
+          <rect width="2" height="1" y="8" />
         </g>
-        <!--end of stitches-->
-
-        <pattern
-          id="borderH"
-          class="plaidBorder"
-          width="10"
-          height="10"
-          patternUnits="userSpaceOnUse"
-          transformPattern="(1, 0, 0, 1, 0, 0)"
-        >
-          <use href="#horizontal" />
-        </pattern>
-
-        <pattern id="borderV" class="plaidBorder" href="#borderH">
-          <use href="#vertical" />
-        </pattern>
-
-        <pattern id="outerH" class="plaidOuter" href="#borderH">
-          <use href="#horizontal" />
-        </pattern>
-
-        <pattern id="outerV" class="plaidOuter" href="#borderH">
-          <use href="#vertical" />
-        </pattern>
-
-        <pattern id="centerH" class="plaidCenter" href="#borderH">
-          <use href="#horizontal" />
-        </pattern>
-
-        <pattern id="centerV" class="plaidCenter" href="#borderH">
-          <use href="#horizontal" />
-        </pattern>
-
-        <pattern
-          id="patternPlaid"
-          width="750"
-          height="750"
-          patternUnits="userSpaceOnUse"
-        >
-          <rect class="outerH" width="750" height="110" y="28" />
-          <rect class="outerV" width="110" height="750" x="28" />
-          <rect class="outerH" width="750" height="104" y="644" />
-          <rect class="outerV" width="104" height="750" x="644" />
-          <rect class="centerH" width="750" height="310" y="236" />
-          <rect class="centerV" width="310" height="750" x="236" />
-
-          <rect class="outerH" width="750" height="10" y="336" />
-          <rect class="outerH" width="750" height="10" y="360" />
-          <rect class="outerH" width="750" height="14" y="384" />
-          <rect class="outerH" width="750" height="10" y="412" />
-          <rect class="outerH" width="750" height="10" y="436" />
-
-          <rect class="outerV" width="10" height="750" x="336" />
-          <rect class="outerV" width="10" height="750" x="360" />
-          <rect class="outerV" width="14" height="750" x="384" />
-          <rect class="outerV" width="10" height="750" x="412" />
-          <rect class="outerV" width="10" height="750" x="436" />
-
-          <rect class="borderH" width="750" height="23" />
-          <rect class="borderV" width="23" height="750" />
-        </pattern>
-        <!-- end of plaid stuff -->
-        <pattern
-          id="patternPolkaDots"
-          width="40"
-          height="40"
-          patternUnits="userSpaceOnUse"
-          patternContentUnits="userSpaceOnUse"
-        >
-          <circle id="pattern-circle" cx="23" cy="20" r="5" fill="#ffffff" />
-        </pattern>
-      </defs>
-      <rect
-        id="plaidRect"
-        class="backgroundSvg"
-        opacity="0"
-        width="100%"
-        height="100%"
-        fill="url(#patternPlaid)"
-      />
-      <rect
-        id="polkaDotsRect"
-        class="backgroundSvg"
-        opacity="0"
-        x="0"
-        width="100%"
-        height="100%"
-        fill="url(#patternPolkaDots)"
-      />
-      <path
-        id="border"
-        d="m 111.30025,44.944808 c -34.931408,0 -63.053101,28.524558 -63.053101,63.956422 v 550.19736 c 0,35.43187 28.121693,63.95645 63.053101,63.95645 h 199.99657 c 202.03672,0 199.99656,1.11424 199.99656,-190.45423 V 342.1466 c 0,-47.41479 28.12169,-85.58622 63.05313,-85.58622 h 105.83832 5.63028 105.83832 c 34.93144,0 63.0531,38.17144 63.0531,85.58622 v 190.45421 c 0,191.56847 -2.04013,190.45423 199.99667,190.45423 h 199.9966 c 34.9313,0 63.0531,-28.52458 63.0531,-63.95645 V 108.90123 c 0,-35.431864 -28.1218,-63.956422 -63.0531,-63.956422 h -568.88469 -5.63028 z"
-      />
-      <g id="minBlackRedTrees" class="backgroundSvg">
-        <g id="berryTrees">
-          <use id="berryTree1" href="#berryTree" x="115" y="300" />
-          <use id="berryTree2" href="#berryTree" x="115" y="300" />
-          <use id="berryTree3" href="#berryTree" x="115" y="300" />
-        </g>
-        <g id="bubbleTrees">
-          <use id="bubbleTree1" href="#bubbleTree" x="1130" y="100" />
-          <use id="bubbleTree2" href="#bubbleTree" x="180" y="180" />
+        <g id="vertical">
+          <rect width="1" height="5" />
+          <rect width="1" height="5" x="2" y="2" />
+          <rect width="1" height="5" x="4" y="4" />
+          <rect width="1" height="4" x="6" y="6" />
+          <rect width="1" height="2" x="8" y="8" />
+          <rect width="1" height="1" x="6" />
+          <rect width="1" height="3" x="8" />
         </g>
       </g>
-    </svg>
-    <h1 id="sfcBanner">Synonym For Commerce</h1>
-    <div id="accordions">
-      <div id="accordionLeft" class="accordion">
-        <h3 id="aboutBlank" class="accordionButton" tabindex="0">Placeholder</h3>
-        <div>
-          <ul>
-            <li class="tooltip">Placeholder<span class="tooltiptext">I'm gonna put something here eventually, I swear. I just gotta make some stuff for the other categories first, then fix up the styling on this page, do the laundry...</span></li>
-          </ul>
-        </div>
-        <h3 id="rasterAnimations" class="accordionButton" tabindex="1">
-          Raster Animations
-        </h3>
-        <div>
-          <ul>
-            <li><a class="tooltip" href="/liveWallpapers">Live Wallpapers<span class="tooltiptext">Some looping videos which are conveniently phone shaped</span></a></li>
-          </ul>
-        </div>
-        <h3 id="svgShowcase" class="accordionButton" tabindex="2">
-          Svg Showcase
-        </h3>
-        <div>
-          <ul>
-            <li><a class="tooltip" href="/flowers">Flowers<span class="tooltiptext">A simple animation made with GSAP, probably. Try clicking some of the flowers.</span></a></li>
-            <li><a class="tooltip" href="/mandala">Mandala Generator<span class="tooltiptext">Generate layers of circular patterns to create Mandalas</span></a></li>
-            <li><a class="tooltip" href="/dream-catcher">Dream Catcher Generator<span class="tooltiptext">Generate dream catchers</span></a></li>
-            <li><a class="tooltip" href="/feDeadBoard">FilterElement Sandbox<span class="tooltiptext">An interactive demonstration of SVG Filters with a frustrating trutorial.</span></a></li>
-            <li><a class="tooltip" href="/svgPortfolio">SVG Portfolio<span class="tooltiptext">A collection of SVG animations. There are small arrows at the bottom for navigation.</span></a></li>
-          </ul>
-        </div>
-        <h3 id="pointAndClick" class="accordionButton" tabindex="3">
-          Point & Click Games
-        </h3>
-        <div>
-          <ul>
-            <li><a class="tooltip" href="/flamingone">Flamingone<span class="tooltiptext">An incomplete game about a bird who keeps dying, but dreams of flying.</span></a></li>
-          </ul>
-        </div>
+      <!--end of stitches-->
+
+      <pattern id="borderH" class="plaidBorder" width="10" height="10" patternUnits="userSpaceOnUse"
+        transformPattern="(1, 0, 0, 1, 0, 0)">
+        <use href="#horizontal" />
+      </pattern>
+
+      <pattern id="borderV" class="plaidBorder" href="#borderH">
+        <use href="#vertical" />
+      </pattern>
+
+      <pattern id="outerH" class="plaidOuter" href="#borderH">
+        <use href="#horizontal" />
+      </pattern>
+
+      <pattern id="outerV" class="plaidOuter" href="#borderH">
+        <use href="#vertical" />
+      </pattern>
+
+      <pattern id="centerH" class="plaidCenter" href="#borderH">
+        <use href="#horizontal" />
+      </pattern>
+
+      <pattern id="centerV" class="plaidCenter" href="#borderH">
+        <use href="#horizontal" />
+      </pattern>
+
+      <pattern id="patternPlaid" width="750" height="750" patternUnits="userSpaceOnUse">
+        <rect class="outerH" width="750" height="110" y="28" />
+        <rect class="outerV" width="110" height="750" x="28" />
+        <rect class="outerH" width="750" height="104" y="644" />
+        <rect class="outerV" width="104" height="750" x="644" />
+        <rect class="centerH" width="750" height="310" y="236" />
+        <rect class="centerV" width="310" height="750" x="236" />
+
+        <rect class="outerH" width="750" height="10" y="336" />
+        <rect class="outerH" width="750" height="10" y="360" />
+        <rect class="outerH" width="750" height="14" y="384" />
+        <rect class="outerH" width="750" height="10" y="412" />
+        <rect class="outerH" width="750" height="10" y="436" />
+
+        <rect class="outerV" width="10" height="750" x="336" />
+        <rect class="outerV" width="10" height="750" x="360" />
+        <rect class="outerV" width="14" height="750" x="384" />
+        <rect class="outerV" width="10" height="750" x="412" />
+        <rect class="outerV" width="10" height="750" x="436" />
+
+        <rect class="borderH" width="750" height="23" />
+        <rect class="borderV" width="23" height="750" />
+      </pattern>
+      <!-- end of plaid stuff -->
+      <pattern id="patternPolkaDots" width="40" height="40" patternUnits="userSpaceOnUse"
+        patternContentUnits="userSpaceOnUse">
+        <circle id="pattern-circle" cx="23" cy="20" r="5" fill="#ffffff" />
+      </pattern>
+    </defs>
+    <rect id="plaidRect" class="backgroundSvg" opacity="0" width="100%" height="100%" fill="url(#patternPlaid)" />
+    <rect id="polkaDotsRect" class="backgroundSvg" opacity="0" x="0" width="100%" height="100%"
+      fill="url(#patternPolkaDots)" />
+    <path id="border"
+      d="m 111.30025,44.944808 c -34.931408,0 -63.053101,28.524558 -63.053101,63.956422 v 550.19736 c 0,35.43187 28.121693,63.95645 63.053101,63.95645 h 199.99657 c 202.03672,0 199.99656,1.11424 199.99656,-190.45423 V 342.1466 c 0,-47.41479 28.12169,-85.58622 63.05313,-85.58622 h 105.83832 5.63028 105.83832 c 34.93144,0 63.0531,38.17144 63.0531,85.58622 v 190.45421 c 0,191.56847 -2.04013,190.45423 199.99667,190.45423 h 199.9966 c 34.9313,0 63.0531,-28.52458 63.0531,-63.95645 V 108.90123 c 0,-35.431864 -28.1218,-63.956422 -63.0531,-63.956422 h -568.88469 -5.63028 z" />
+    <g id="minBlackRedTrees" class="backgroundSvg">
+      <g id="berryTrees">
+        <use id="berryTree1" href="#berryTree" x="115" y="300" />
+        <use id="berryTree2" href="#berryTree" x="115" y="300" />
+        <use id="berryTree3" href="#berryTree" x="115" y="300" />
+      </g>
+      <g id="bubbleTrees">
+        <use id="bubbleTree1" href="#bubbleTree" x="1130" y="100" />
+        <use id="bubbleTree2" href="#bubbleTree" x="180" y="180" />
+      </g>
+    </g>
+  </svg>
+  <h1 id="sfcBanner">Synonym For Commerce</h1>
+  <div id="accordions">
+    <div id="accordionLeft" class="accordion">
+      <h3 id="aboutBlank" class="accordionButton" tabindex="0">Placeholder</h3>
+      <div>
+        <ul>
+          <li class="tooltip">Placeholder<span class="tooltiptext">I'm gonna put something here eventually, I swear. I
+              just gotta make some stuff for the other categories first, then fix up the styling on this page, do the
+              laundry...</span></li>
+        </ul>
+      </div>
+      <h3 id="rasterAnimations" class="accordionButton" tabindex="1">
+        Raster Animations
+      </h3>
+      <div>
+        <ul>
+          <li><a class="tooltip" href="/liveWallpapers">Live Wallpapers<span class="tooltiptext">Some looping videos
+                which are conveniently phone shaped</span></a></li>
+        </ul>
+      </div>
+      <h3 id="svgShowcase" class="accordionButton" tabindex="2">
+        Svg Showcase
+      </h3>
+      <div>
+        <ul>
+          <li><a class="tooltip" href="/flowers">Flowers<span class="tooltiptext">A simple animation made with GSAP,
+                probably. Try clicking some of the flowers.</span></a></li>
+          <li><a class="tooltip" href="/mandala">Mandala Generator<span class="tooltiptext">Generate layers of circular
+                patterns to create Mandalas</span></a></li>
+          <li><a class="tooltip" href="/dream-catcher">Dream Catcher Generator<span class="tooltiptext">Generate dream
+                catchers</span></a></li>
+          <li><a class="tooltip" href="/feDeadBoard">FilterElement Sandbox<span class="tooltiptext">An interactive
+                demonstration of SVG Filters with a frustrating trutorial.</span></a></li>
+          <li><a class="tooltip" href="/svgPortfolio">SVG Portfolio<span class="tooltiptext">A collection of SVG
+                animations. There are small arrows at the bottom for navigation.</span></a></li>
+        </ul>
+      </div>
+      <h3 id="pointAndClick" class="accordionButton" tabindex="3">
+        Point & Click Games
+      </h3>
+      <div>
+        <ul>
+          <li><a class="tooltip" href="/flamingone">Flamingone<span class="tooltiptext">An incomplete game about a bird
+                who keeps dying, but dreams of flying.</span></a></li>
+        </ul>
       </div>
     </div>
-    <div id="curtains"></div>
-    <!-- jquery libraries -->
-    <script type="text/javascript" src="js/jquery.js"></script>
-    <script
-      type="text/javascript"
-      src="js/jquery-ui-1.12.1/jquery-ui.js"
-    ></script>
-    <!-- gsap -->
-    <script
-      type="text/javascript"
-      src="js/gsap-shockingly-green/umd/gsap.js"
-    ></script>
-    <script
-      type="text/javascript"
-      src="js/gsap-shockingly-green/umd/CSSRulePlugin.js"
-    ></script>
-    <!-- sfc js -->
-    <script type="text/javascript" src="js/door.js"></script>
-    <script>
-      $(function () {
-        $(".accordion").accordion();
-      });
-    </script>
-  </body>
+  </div>
+  <div id="curtains"></div>
+  <!-- jquery libraries -->
+  <script type="text/javascript" src="js/jquery.js"></script>
+  <script type="text/javascript" src="js/jquery-ui-1.12.1/jquery-ui.js"></script>
+  <!-- gsap -->
+  <script type="text/javascript" src="js/gsap-shockingly-green/umd/gsap.js"></script>
+  <script type="text/javascript" src="js/gsap-shockingly-green/umd/CSSRulePlugin.js"></script>
+  <!-- sfc js -->
+  <script type="text/javascript" src="js/door.js"></script>
+  <script>
+    $(function () {
+      $(".accordion").accordion();
+    });
+  </script>
+</body>
+
 </html>
