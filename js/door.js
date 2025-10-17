@@ -5,7 +5,8 @@ const accordions = [
 // defaul duration for changes
 let dur = 1.2;
 const buttonBorderDefault = "3px, solid black";
-const opacityDefault = 0.5;
+const opacityDefault = 0.5
+const VIDEO_PLAYER = document.querySelector("#video-player");
 
 //FIXME:should be in lib
 getCssVar = function (value) {
@@ -93,8 +94,10 @@ const categoryArr = [
 
 changeCategory = function (c) {
 
-  document.querySelector("#video-player").pause()
-// TODO: replace a bunch of the object info with a switch statement (iframe visability and such can just be toggled based on c.name rather than each object storing the state)
+  VIDEO_PLAYER.pause()
+  document.querySelector("#video-player-source").removeAttribute("src");
+  VIDEO_PLAYER.load();
+  // TODO: replace a bunch of the object info with a switch statement (iframe visability and such can just be toggled based on c.name rather than each object storing the state)
   let tl = gsap.timeline();
   tl.to(".backgroundSvg", { duration: dur / 2, opacity: 0 });
   tl.to(c.backgroundSvg, { duration: dur / 2, opacity: 1 });
@@ -122,7 +125,7 @@ changeCategory = function (c) {
     strokeOpacity: c.strokeOpacity,
     strokeWidth: c.strokeWidth,
   });
-    gsap.to("#SLoopDots", {
+  gsap.to("#SLoopDots", {
     duration: dur,
     stroke: c.stroke,
     strokeOpacity: c.strokeOpacity,
@@ -146,8 +149,8 @@ changeCategory = function (c) {
     cssRule: { opacity: c.borders ? 1 : 0 },
   });
   gsap.to(".sfc-banner text", { duration: dur, fill: c.bannerTextColor });
-  gsap.set("#video-player", {visibility: c.videoPlayer});
-  gsap.set("#iframe-showcase", {visibility: c.iframe});
+  gsap.set("#video-player", { visibility: c.videoPlayer });
+  gsap.set("#iframe-showcase", { visibility: c.iframe });
 };
 
 $(".accordionButton").click((e) => {
@@ -164,18 +167,16 @@ $(".accordionButton").on("mouseleave", () => {
   gsap.to("#dispMap", { attr: { scale: 1 } });
 });
 
-$(".iframe").on("click", (event)=>{
+$(".iframe").on("click", (event) => {
   document.querySelector("#iframe-showcase").setAttribute("src", event.target.dataset.url)
 })
 
-$(".video-tooltip").on("click", (event)=>{
+$(".video-tooltip").on("click", (event) => {
   document.querySelector("#video-player-source").setAttribute("src", event.target.dataset.url)
-  let video = document.querySelector("#video-player")
-  let loop = event.target.dataset.loop ==="true";
-  video.muted = loop;
-  video.loop = loop;
-  video.load()
-  video.play()
+  let loop = event.target.dataset.loop === "true";
+  VIDEO_PLAYER.muted = loop;
+  VIDEO_PLAYER.loop = loop;
+  VIDEO_PLAYER.load()
 })
 
 //FIXME: as much as i enjoy this animation, firefox cant handle nor can older systems
