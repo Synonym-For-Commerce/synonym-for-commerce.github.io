@@ -149,6 +149,7 @@ iframe {
 
 #accordionLeft {
     position: fixed;
+    z-index: 500;
     top     : 50%;
     left    : 3%;
 }
