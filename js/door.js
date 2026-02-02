@@ -179,26 +179,8 @@ $(".video-tooltip").on("click", (event) => {
   VIDEO_PLAYER.load()
 })
 
-//TODO: This si never called, becasue its broken and performaNCE INtensive, add to index.htmls body <body onload="bannerShapes()"> in order to fire and add curtains div to end of page
+
 bannerShapes = function () {
-  gsap.to("#curtains", { duration: dur, opacity: 0, visibility: "hidden" });
+  gsap.to("#curtains", { duration: dur * 3, opacity: 0, visibility: "hidden" });
   changeCategory(categoryArr[0]);
-
-  const isChrome =
-    navigator.userAgent.includes("Chrome") &&
-    !navigator.userAgent.includes("Edge") &&
-    !navigator.userAgent.includes("OPR"); // exclude Opera/Edge
-
-  if (isChrome) {
-    // apply filter to all SVGs directly under <body>
-    document.querySelectorAll("body > svg").forEach(svg => {
-      svg.style.filter = "url(#filterShapes)";
-    });
-
-    gsap.to("#filterShapesDisplacementMap", {
-      duration: dur,
-      attr: { scale: 0 },
-    });
-  }
-
 };
