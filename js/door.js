@@ -181,6 +181,6 @@ $(".video-tooltip").on("click", (event) => {
 
 
 bannerShapes = function () {
-  gsap.to("#curtains", { duration: dur * 3, opacity: 0, visibility: "hidden" });
+  gsap.to("#curtains", { duration: 3, opacity: 0 });
   changeCategory(categoryArr[0]);
 };
