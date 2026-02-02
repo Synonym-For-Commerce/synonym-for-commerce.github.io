@@ -179,7 +179,7 @@ $(".video-tooltip").on("click", (event) => {
   VIDEO_PLAYER.load()
 })
 
-//FIXME: as much as i enjoy this animation, firefox cant handle nor can older systems
+//TODO: This si never called, becasue its broken and performaNCE INtensive, add to index.htmls body <body onload="bannerShapes()"> in order to fire and add curtains div to end of page
 bannerShapes = function () {
   gsap.to("#curtains", { duration: dur, opacity: 0, visibility: "hidden" });
   changeCategory(categoryArr[0]);
