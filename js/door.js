@@ -32,6 +32,7 @@ const categoryArr = [
     bannerTextColor: "white",
     videoPlayer: "hidden",
     iframe: "visible",
+    model: "hidden",
   },
   {
     name: "raster-animations",
@@ -51,9 +52,10 @@ const categoryArr = [
     bannerTextColor: getCssVar("--red"),
     videoPlayer: "visible",
     iframe: "hidden",
+    model: "hidden",
   },
   {
-    name: "qa",
+    name: "3d",
     bgColor: "black",
     borderFill: "url(#patternPlaid)",
     stroke: "black",
@@ -70,6 +72,7 @@ const categoryArr = [
     bannerTextColor: getCssVar("--green-light"),
     videoPlayer: "hidden",
     iframe: "hidden",
+    model: "visible",
   },
   {
     name: "godot",
@@ -89,6 +92,7 @@ const categoryArr = [
     bannerTextColor: "black",
     videoPlayer: "hidden",
     iframe: "hidden",
+    model: "hidden",
   }
 ];
 
@@ -151,6 +155,7 @@ changeCategory = function (c) {
   gsap.to(".sfc-banner text", { duration: dur, fill: c.bannerTextColor });
   gsap.set("#video-player", { visibility: c.videoPlayer });
   gsap.set("#iframe-showcase", { visibility: c.iframe });
+  gsap.set("#model3d", {visibility: c.model })
 };
 
 $(".accordionButton").click((e) => {

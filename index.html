@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Commit #28 - vidoe src removed and player reloads on tab change"/>
+  <meta name="description" content="Commit #28 - vidoe src removed and player reloads on tab change" />
   <title>Synonym For Commerce</title>
   <link rel="stylesheet" href="css/doorPalette.css" />
   <link rel="stylesheet" href="css/door.css" />
@@ -82,7 +82,8 @@
 
 <body onload="bannerShapes()">
   <div id="noBackgroundSvg" class="backgroundSvg"></div>
-  <svg viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice" width="100%" height="100%" style="position: absolute;">
+  <svg viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice" width="100%" height="100%"
+    style="position: absolute;">
     <rect id="polkaDotsRect" class="backgroundSvg" opacity="0" x="0" width="100%" height="200%"
       fill="url(#patternPolkaDots)" />
   </svg>
@@ -594,11 +595,11 @@
                 class="tooltiptext">A tour of some assets from a 3D game currently in development</span></a></li>
         </ul>
       </div>
-      <h3 id="qa" class="accordionButton ui-accordion-header" tabindex="3">Quality Assurance</h3>
+      <h3 id="3d" class="accordionButton ui-accordion-header" tabindex="3">3D Models</h3>
       <div class="ui-accordion-content">
         <ul>
-          <li><a class="tooltip" href="https://tree.taiga.io/project/mhawryluk-conors-website/">Taiga<span
-                class="tooltiptext">Bug tracking and additional resources for the development of the website</span></a>
+          <li><a class="tooltip">KonPhone/Shazna<span class="tooltiptext">A stringed instrument with floating frets,
+                sympathetic strings and cone resonators</span></a>
           </li>
         </ul>
       </div>
@@ -612,117 +613,121 @@
     <iframe id="iframe-showcase" src="/AnimationsSVG/paisley.html" title="Animated paisley shapes"></iframe>
   </div>
 
-  <div id="curtains"/>
+
+  <model-viewer id="model3d" src="assets/shazna-KonPhone.glb" camera-controls auto-rotate style="width:100vw; height:100vh;"/>
+
+  <div id="curtains"></div>
   <footer>
     <p></p>
   </footer>
 
+  <script type="text/javascript" src="js/jquery.js"></script>
+  <script type="text/javascript" src="js/jquery-ui-1.12.1/jquery-ui.js"></script>
+  <!-- gsap -->
+  <script type="text/javascript" src="js/gsap-shockingly-green/umd/gsap.js"></script>
+  <script type="text/javascript" src="js/gsap-shockingly-green/umd/CSSRulePlugin.js"></script>
+  <!-- google 3d model viewer-->
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+  <!-- sfc js -->
+  <script type="text/javascript" src="js/door.js"></script>
+  <script>
+    //< ![CDATA[
+    const NS = {
+      svg: "http://www.w3.org/2000/svg",
+      xlink: "http://www.w3.org/1999/xlink",
+      html: "http://www.w3.org/1999/xhtml",
+    };
 
-</body>
-<script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript" src="js/jquery-ui-1.12.1/jquery-ui.js"></script>
-<!-- gsap -->
-<script type="text/javascript" src="js/gsap-shockingly-green/umd/gsap.js"></script>
-<script type="text/javascript" src="js/gsap-shockingly-green/umd/CSSRulePlugin.js"></script>
-<!-- sfc js -->
-<script type="text/javascript" src="js/door.js"></script>
-<script>
-  //< ![CDATA[
-  const NS = {
-    svg: "http://www.w3.org/2000/svg",
-    xlink: "http://www.w3.org/1999/xlink",
-    html: "http://www.w3.org/1999/xhtml",
-  };
-
-  cl = function (text) {
-    console.log(text ?? "debug");
-  };
-  //create svg elements
-  createElementSvg = function (element, params = {}, content, ns) {
-    let e = document.createElementNS(ns ?? NS.svg, element);
-    if (!params) return e;
-    Object.entries(params).forEach((p) => {
-      const [attribute, value] = p;
-      e.setAttributeNS(null, attribute, value);
-    });
-    if (content) e.textContent = content;
-    return e;
-  };
-  qs = function (string) {
-    return document.querySelector(string);
-  };
-  qsa = function (string) {
-    return document.querySelectorAll(string);
-  };
-  Array.prototype.random = function () {
-    return this[Math.floor(Math.random() * this.length)];
-  };
-  function smilDFromG(pathToAnimate, pathsG, duration, ease) {
-    function getPathDsFromG(pathsG) {
-      let shapeData = "";
-      //... spreads the HTML collection into an array 
-      [...pathsG.children].forEach((path) => {
-        shapeData += path.getAttribute("d") + "; "
-      })
-      return shapeData;
-    }
-    let attrObj = { attributeName: "d", dur: duration, repeatCount: "indefinite", values: getPathDsFromG(pathsG) }
-    let animateTag = createElementSvg("animate", attrObj);
-
-    if (ease) {
-      animateTag.setAttribute("calcMode", "spline");
-      if (typeof ease === "object") {
-        animateTag.setAttribute("keyTimes", ease.keyTimes);
-        animateTag.setAttribute("keySplines", ease.keySplines);
+    cl = function (text) {
+      console.log(text ?? "debug");
+    };
+    //create svg elements
+    createElementSvg = function (element, params = {}, content, ns) {
+      let e = document.createElementNS(ns ?? NS.svg, element);
+      if (!params) return e;
+      Object.entries(params).forEach((p) => {
+        const [attribute, value] = p;
+        e.setAttributeNS(null, attribute, value);
+      });
+      if (content) e.textContent = content;
+      return e;
+    };
+    qs = function (string) {
+      return document.querySelector(string);
+    };
+    qsa = function (string) {
+      return document.querySelectorAll(string);
+    };
+    Array.prototype.random = function () {
+      return this[Math.floor(Math.random() * this.length)];
+    };
+    function smilDFromG(pathToAnimate, pathsG, duration, ease) {
+      function getPathDsFromG(pathsG) {
+        let shapeData = "";
+        //... spreads the HTML collection into an array 
+        [...pathsG.children].forEach((path) => {
+          shapeData += path.getAttribute("d") + "; "
+        })
+        return shapeData;
       }
-      else {
-        let keytimesString = "";
-        let keysplinesString = "";
-        //this could probably be at the top of the function and the spread.foreach could be a for loop but i wanted to show both for the sake of demonstrating how to use a forEach loop with an HTMLcollection
-        let numOfPaths = pathsG.children.length;
-        for (let i = 0; i < numOfPaths; i++) {
-          keytimesString += i / (numOfPaths - 1) + "; ";
-          if (ease === "alternate") {
-            keysplinesString += i % 2 ? "0 0 1.0 0.7; " : "0 0.5 1 1.0; ";
-          }
-          else {
-            keysplinesString += ".4 .6 .6 .4; ";
-          }
+      let attrObj = { attributeName: "d", dur: duration, repeatCount: "indefinite", values: getPathDsFromG(pathsG) }
+      let animateTag = createElementSvg("animate", attrObj);
+
+      if (ease) {
+        animateTag.setAttribute("calcMode", "spline");
+        if (typeof ease === "object") {
+          animateTag.setAttribute("keyTimes", ease.keyTimes);
+          animateTag.setAttribute("keySplines", ease.keySplines);
         }
-        keytimesString = keytimesString.slice(0, keytimesString.length - 2);
-        keysplinesString = keysplinesString.slice(0, keysplinesString.length - 15);
-        animateTag.setAttribute("keyTimes", keytimesString);
-        animateTag.setAttribute("keySplines", keysplinesString);
+        else {
+          let keytimesString = "";
+          let keysplinesString = "";
+          //this could probably be at the top of the function and the spread.foreach could be a for loop but i wanted to show both for the sake of demonstrating how to use a forEach loop with an HTMLcollection
+          let numOfPaths = pathsG.children.length;
+          for (let i = 0; i < numOfPaths; i++) {
+            keytimesString += i / (numOfPaths - 1) + "; ";
+            if (ease === "alternate") {
+              keysplinesString += i % 2 ? "0 0 1.0 0.7; " : "0 0.5 1 1.0; ";
+            }
+            else {
+              keysplinesString += ".4 .6 .6 .4; ";
+            }
+          }
+          keytimesString = keytimesString.slice(0, keytimesString.length - 2);
+          keysplinesString = keysplinesString.slice(0, keysplinesString.length - 15);
+          animateTag.setAttribute("keyTimes", keytimesString);
+          animateTag.setAttribute("keySplines", keysplinesString);
+        }
       }
+      pathToAnimate.appendChild(animateTag);
     }
-    pathToAnimate.appendChild(animateTag);
-  }
-  {
-    let frameCount = 0;
-    let startTime = performance.now();
-    let benchmark = false;
-    function measureFPS() {
-      frameCount++;
-      const currentTime = performance.now();
-      const duration = currentTime - startTime;
-      if (duration >= 1000) {
-        const fps = (frameCount / duration) * 1000;
-        qs("#fps").textContent = `FPS: ${fps.toFixed(2)}`;
-        frameCount = 0;
-        startTime = currentTime;
+    {
+      let frameCount = 0;
+      let startTime = performance.now();
+      let benchmark = false;
+      function measureFPS() {
+        frameCount++;
+        const currentTime = performance.now();
+        const duration = currentTime - startTime;
+        if (duration >= 1000) {
+          const fps = (frameCount / duration) * 1000;
+          qs("#fps").textContent = `FPS: ${fps.toFixed(2)}`;
+          frameCount = 0;
+          startTime = currentTime;
+        }
+        requestAnimationFrame(measureFPS);
       }
       requestAnimationFrame(measureFPS);
+
     }
-    requestAnimationFrame(measureFPS);
+    //]]>
+  </script>
+  <script>
+    $(function () {
+      $(".accordion").accordion();
+    });
+  </script>
 
-  }
-  //]]>
-</script>
-<script>
-  $(function () {
-    $(".accordion").accordion();
-  });
-
-</script>
+</body>
 
 </html>
