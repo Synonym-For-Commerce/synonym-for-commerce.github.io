@@ -1,17 +1,17 @@
 @font-face {
     font-family: Synamyn;
-    src        : url("/assets/synamyn.woff") format("opentype");
+    src: url("/assets/synamyn.woff") format("opentype");
 }
 
 body {
-    display        : flex;
-    align-items    : center;
+    display: flex;
+    align-items: center;
     justify-content: center;
-    font-family    : Georgia, 'Times New Roman', Times, serif;
-    font-size      : 1vw;
-    text-align     : center;
-    align-content  : center;
-    overflow       : visible;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 1vw;
+    text-align: center;
+    align-content: center;
+    overflow: visible;
 }
 
 svg {
@@ -20,8 +20,8 @@ svg {
 
 ul {
     list-style-type: none;
-    margin         : 0;
-    padding        : 0;
+    margin: 0;
+    padding: 0;
 }
 
 a {
@@ -29,26 +29,26 @@ a {
 }
 
 .tooltip {
-    position     : relative;
-    display      : inline-block;
+    position: relative;
+    display: inline-block;
     border-bottom: 1px dotted black;
-    margin       : 0;
-    cursor       : pointer;
+    margin: 0;
+    cursor: pointer;
 }
 
 .tooltip .tooltiptext {
-    visibility      : hidden;
-    width           : 20%;
-    height          : 20%;
+    visibility: hidden;
+    width: 20%;
+    height: 20%;
     background-color: black;
-    color           : #fff;
-    text-align      : center;
-    border-radius   : 6px;
-    padding         : 5px 0;
-    position        : fixed;
-    z-index         : 1;
-    top             : 42%;
-    left            : 28%;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: fixed;
+    z-index: 1;
+    top: 42%;
+    left: 28%;
 }
 
 .tooltip:hover .tooltiptext {
@@ -60,48 +60,58 @@ a {
 }
 
 video {
-    position : absolute;
-    height   : 90VH;
-    right    : 0;
-    top      : 5%;
+    position: absolute;
+    height: 90VH;
+    right: 0;
+    top: 5%;
     max-width: 50%;
 }
 
 iframe {
-    position     : absolute;
-    border       : transparent;
+    position: absolute;
+    border: transparent;
     border-radius: 50%;
-    height       : 70VH;
-    width        : 70VH;
-    right        : 8%;
-    top          : 15%;
+    height: 70VH;
+    width: 70VH;
+    right: 8%;
+    top: 15%;
 
 }
 
+model-viewer {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    border: transparent;
+    top: 0vh;
+}
+
 #curtains {
-    top     : 0;
-    left    : 0;
-    width           : 100%;
-    height          : 100%;
-    position        : fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: fixed;
     background-color: black;
-    pointer-events  : none;
+    pointer-events: none;
     z-index: 1000;
 }
 
 #svgContainer {
     position: fixed;
-    top     : 0;
-    left    : 0;
-    width   : 100%;
-    height  : 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
 #border {
-    filter        : url(#filterCloud);
-    stroke        : #666;
-    fill          : #ccc;
-    stroke-width  : 2%;
+    filter: url(#filterCloud);
+    stroke: #666;
+    fill: #ccc;
+    stroke-width: 2%;
     stroke-opacity: 50%;
 }
 
@@ -114,26 +124,26 @@ iframe {
 
 .ui-accordion .ui-accordion-header {
     background-color: rgba(246, 246, 246, 0.5);
-    margin          : 0;
+    margin: 0;
 }
 
 .ui-accordion-header::before,
 .ui-accordion-header-icon {
-    display   : none !important;
-    content   : none !important;
+    display: none !important;
+    content: none !important;
     background: none !important;
 }
 
 .accordion::after {
-    filter              : url(#filterContrastText);
-    opacity             : 1;
-    display             : block;
+    filter: url(#filterContrastText);
+    opacity: 1;
+    display: block;
     /* not using content: url() because of simple centering */
-    content             : '';
-    background-image    : url('/assets/under.svg');
-    height              : 30%;
-    width               : 100%;
-    background-size     : 100% 100%;
+    content: '';
+    background-image: url('/assets/under.svg');
+    height: 30%;
+    width: 100%;
+    background-size: 100% 100%;
 }
 
 .accordion:before {
@@ -141,30 +151,30 @@ iframe {
 }
 
 .accordion {
-    width           : 20%;
-    height          : 40%;
-    border-radius   : 20px;
+    width: 20%;
+    height: 40%;
+    border-radius: 20px;
     /* visibility   : hidden; */
 }
 
 #accordionLeft {
     position: fixed;
     z-index: 500;
-    top     : 50%;
-    left    : 3%;
+    top: 50%;
+    left: 3%;
 }
 
 .accordion .ui-accordion-content {
     background-color: var(--white-trans-70);
-    border-radius   : 15px;
-    margin          : 0;
-    padding         : 0;
-    border          : none;
+    border-radius: 15px;
+    margin: 0;
+    padding: 0;
+    border: none;
 }
 
 .accordion .ui-accordion-header-active {
     background-color: var(--teal);
-    opacity         : 0.2;
+    opacity: 0.2;
 }
 
 
@@ -187,7 +197,7 @@ iframe {
 
 #berryTree2 {
     transform-origin: center;
-    transform       : scale(0.78);
+    transform: scale(0.78);
 
 }
 
@@ -197,7 +207,7 @@ iframe {
 
 #berryTree3 {
     transform-origin: center;
-    transform       : scale(0.6, 0.55);
+    transform: scale(0.6, 0.55);
 }
 
 #bubbleTree {
@@ -206,7 +216,7 @@ iframe {
 
 #bubbleTree2 {
     transform-origin: center;
-    transform       : scale(-0.8, 0.8);
+    transform: scale(-0.8, 0.8);
 }
 
 /* end of minBlackRedTrees */
@@ -262,19 +272,19 @@ iframe {
 /* end of plaid */
 /* tree border */
 .leaves {
-    stroke      : black;
+    stroke: black;
     stroke-width: 2;
 }
 
 #borders path {
-    stroke          : black;
-    stroke-width    : 5;
+    stroke: black;
+    stroke-width: 5;
     stroke-dasharray: 27 35 45 55 72 85 100 85 72 55 45 35;
 }
 
 #halo {
     opacity: 0.75;
-    fill   : var(--yellow-fade);
+    fill: var(--yellow-fade);
 }
 
 #sun {
@@ -324,16 +334,16 @@ iframe {
 
     #sfcBanner {
         font-size: 10vw;
-        top      : 10%
+        top: 10%
     }
 
     .accordion {
-        width : 50%;
+        width: 50%;
         height: 75%;
     }
 
     #accordionLeft {
-        top : 35%;
+        top: 35%;
         left: 25%;
     }
 
