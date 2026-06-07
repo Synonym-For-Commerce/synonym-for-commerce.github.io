@@ -78,7 +78,7 @@ iframe {
     mask-image: radial-gradient(circle at center,
             white 0%,
             white 45%,
-            transparent 50%);
+            transparent 65%);
     }
 
     model-viewer {
